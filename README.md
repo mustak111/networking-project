@@ -7,6 +7,7 @@ The User Data Collector (UDC) is a PHP-based web application for securely collec
 2 CentOS 8/RHEL 8 VMs (Web and DB server)
 Sudo/root privileges
 Internet access
+
 ![WhatsApp Image 2025-07-28 at 13 10 06_5032658d](https://github.com/user-attachments/assets/1ee46c19-13ea-46da-a009-fe8b0bdaf62e)
 
 1️⃣ **Web Server Setup (Apache + PHP)**
@@ -20,11 +21,14 @@ dnf module -y enable php:8.1
 dnf module -y install php:8.1/common
 yum install php-mysqli -y
 php -v
+<img width="782" height="880" alt="image" src="https://github.com/user-attachments/assets/4148c768-ccdf-4b9d-a8b3-cc5168839721" />
 
 Step 3: Test PHP with a "Hello World" Page
 bash
 echo "<?php echo 'Hello World!'; ?>" > /var/www/html/php_test.php
 In browser, visit: http://<Web-Server-IP>/php_test.php
+![WhatsApp Image 2025-07-28 at 13 10 09_fb23e799](https://github.com/user-attachments/assets/aba8850a-8f5d-425a-9e01-abb721df4535)
+
 
 
 2️⃣ **Database Server Setup (MySQL)**
@@ -68,11 +72,16 @@ CREATE TABLE users (
   file VARCHAR(255)
 );
 
+![WhatsApp Image 2025-07-28 at 13 30 39_3f6f9a3d](https://github.com/user-attachments/assets/ed27d766-adf3-458c-afef-3793b9b0a684)
+
+
 Step 9: Upload Directory on DB Server
 bash
 mkdir -p /var/udc/uploads
 chmod -R 777 /var/udc
 ls -ld /var/udc/uploads
+![WhatsApp Image 2025-07-28 at 13 33 42_b855ab9c](https://github.com/user-attachments/assets/357ffd50-7436-4a3f-847d-041fd7ec1ce7)
+
 
 Step 10: Deploy and Use UDC main.php
 Edit /var/www/html/main.php (see earlier for code).
