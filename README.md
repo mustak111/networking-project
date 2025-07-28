@@ -25,5 +25,58 @@ Step 3: Test PHP with a "Hello World" Page
 bash
 echo "<?php echo 'Hello World!'; ?>" > /var/www/html/php_test.php
 In browser, visit: http://<Web-Server-IP>/php_test.php
-![WhatsApp Image 2025-07-28 at 13 10 07_af7cbd1b](https://github.com/user-attachments/assets/c4b3a96b-b2dd-40cc-b205-2910242e89c5)
+
+
+2️⃣ **Database Server Setup (MySQL)**
+Step 4: Install and Start MySQL Server
+bash
+dnf install -y mysql-server
+systemctl enable --now mysqld
+mysql --version
+
+Step 5: Create Application Database and User
+bash
+mysql -u root -p
+In MySQL shell:
+
+sql
+CREATE DATABASE udc;
+CREATE USER 'udc'@'%' IDENTIFIED BY 'Welcome@123';
+GRANT ALL PRIVILEGES ON udc.* TO 'udc'@'%';
+exit;
+
+Step 6: Test Remote MySQL Access from Web Server
+bash
+mysql -h <DB-SERVER-IP> -u udc -p
+
+3️⃣ **UDC Application Configuration**
+Step 7: Test Database Connection from PHP
+Create /var/www/html/db_check.php as described.
+
+Visit: http://<Web-Server-IP>/db_check.php
+
+Step 8: Create users Table
+From MySQL shell on DB server:
+
+sql
+USE udc;
+CREATE TABLE users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100),
+  age INT,
+  country VARCHAR(100),
+  file VARCHAR(255)
+);
+
+Step 9: Upload Directory on DB Server
+bash
+mkdir -p /var/udc/uploads
+chmod -R 777 /var/udc
+ls -ld /var/udc/uploads
+
+Step 10: Deploy and Use UDC main.php
+Edit /var/www/html/main.php (see earlier for code).
+In browser, visit: http://<Web-Server-IP>/main.php
+Fill out the form and submit.
+
 
