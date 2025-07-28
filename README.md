@@ -17,30 +17,30 @@ Step 1: Install and Start Apache
 systemctl enable --now httpd</pre>
 
 Step 2: Install PHP (and PHP-MySQL extension)
-bash
-dnf module -y enable php:8.1
+
+<pre>dnf module -y enable php:8.1
 dnf module -y install php:8.1/common
 yum install php-mysqli -y
-php -v
+php -v</pre>
 <img width="782" height="880" alt="image" src="https://github.com/user-attachments/assets/4148c768-ccdf-4b9d-a8b3-cc5168839721" />
 
 Step 3: Test PHP with a "Hello World" Page
-bash
+<pre>
 echo "<?php echo 'Hello World!'; ?>" > /var/www/html/php_test.php
-In browser, visit: http://<Web-Server-IP>/php_test.php
+In browser, visit: http://<Web-Server-IP>/php_test.php</pre>
 ![WhatsApp Image 2025-07-28 at 13 10 09_fb23e799](https://github.com/user-attachments/assets/aba8850a-8f5d-425a-9e01-abb721df4535)
 
 
 
 2️⃣ **Database Server Setup (MySQL)**
 Step 4: Install and Start MySQL Server
-bash
-dnf install -y mysql-server
+
+<pre>dnf install -y mysql-server
 systemctl enable --now mysqld
-mysql --version
+mysql --version</pre>
 
 Step 5: Create Application Database and User
-bash
+<pre>
 mysql -u root -p
 
 In MySQL shell:
@@ -49,18 +49,19 @@ CREATE DATABASE udc;
 CREATE USER 'udc'@'%' IDENTIFIED BY 'Welcome@123';
 GRANT ALL PRIVILEGES ON udc.* TO 'udc'@'%';
 exit;
+</pre>
 
 Step 6: Test Remote MySQL Access from Web Server
-bash
-mysql -h <DB-SERVER-IP> -u udc -p
+<pre>mysql -h <DB-SERVER-IP> -u udc -p</pre>
 
 3️⃣ **UDC Application Configuration**
 Step 7: Test Database Connection from PHP
-Create /var/www/html/db_check.php as described.
+<pre>Create /var/www/html/db_check.php as described.
 
-Visit: http://<Web-Server-IP>/db_check.php
+Visit: http://<Web-Server-IP>/db_check.php</pre>
 
 Step 8: Create users Table
+<pre>
 From MySQL shell on DB server:
 
 sql
@@ -72,6 +73,7 @@ CREATE TABLE users (
   country VARCHAR(100),
   file VARCHAR(255)
 );
+</pre>
 
 ![WhatsApp Image 2025-07-28 at 13 30 39_3f6f9a3d](https://github.com/user-attachments/assets/ed27d766-adf3-458c-afef-3793b9b0a684)
 
