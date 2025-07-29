@@ -28,6 +28,8 @@ Step 3: Test PHP with a "Hello World" Page
 <pre>
 echo "<?php echo 'Hello World!'; ?>" > /var/www/html/php_test.php
 In browser, visit: http://<Web-Server-IP>/php_test.php</pre>
+<img width="1918" height="657" alt="ss-2" src="https://github.com/user-attachments/assets/b5ac0db8-8d88-4d15-9799-7b2cf981b793" />
+
 <img width="1918" height="657" alt="image" src="https://github.com/user-attachments/assets/378b7c3a-6650-42b8-a392-aa0fe67aa376" />
 
 
