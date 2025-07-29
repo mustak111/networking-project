@@ -8,13 +8,16 @@ The User Data Collector (UDC) is a PHP-based web application for securely collec
 Sudo/root privileges
 Internet access</pre>
 
-![WhatsApp Image 2025-07-28 at 13 10 06_5032658d](https://github.com/user-attachments/assets/1ee46c19-13ea-46da-a009-fe8b0bdaf62e)
+![ss-1](screenshots/ss-1.png)
+
 
 1️⃣ **Web Server Setup (Apache + PHP)**
 
-Step 1: Install and Start Apache
-<pre>yum install httpd -y
-systemctl enable --now httpd</pre>
+Step 1 : Install Apache in Web Server 
+<pre>
+○ Command : yum install httpd -y 
+○ Command : Set hostname as udc.example.com (using vi /etc/hostname we have to 
+change permanently)</pre>
 
 Step 2: Install PHP (and PHP-MySQL extension)
 
@@ -22,17 +25,26 @@ Step 2: Install PHP (and PHP-MySQL extension)
 dnf module -y install php:8.1/common
 yum install php-mysqli -y
 php -v</pre>
-<img width="782" height="880" alt="image" src="https://github.com/user-attachments/assets/4148c768-ccdf-4b9d-a8b3-cc5168839721" />
 
-Step 3: Test PHP with a "Hello World" Page
+Step 2 : Install PHP and other tools in Web Server 
 <pre>
-echo "<?php echo 'Hello World!'; ?>" > /var/www/html/php_test.php
-In browser, visit: http://<Web-Server-IP>/php_test.php</pre>
-<img width="1918" height="657" alt="ss-2" src="https://github.com/user-attachments/assets/b5ac0db8-8d88-4d15-9799-7b2cf981b793" />
+○ Commands : dnf module list php 
+dnf module -y enable php:8.1 
+dnf module -y install php:8.1/common 
+yum install mysql -y 
+yum install php-mysqli -y </pre>
 
-<img width="1918" height="657" alt="image" src="https://github.com/user-attachments/assets/378b7c3a-6650-42b8-a392-aa0fe67aa376" />
+
+Step 3 : Check the installed PHP version and enable httpd service 
+<pre>
+○ Command : php -v 
+○ Command : systemctl enable --now httpd</pre>
 
 
+Step 4 : Create a test page in 
+Web Server 
+○ Commands : cd /var/www/html 
+vi php_test.php
 
 
 2️⃣ **Database Server Setup (MySQL)**
