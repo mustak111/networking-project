@@ -8,7 +8,7 @@ The User Data Collector (UDC) is a PHP-based web application for securely collec
 Sudo/root privileges
 Internet access</pre>
 
-![ss-1](screenshots/ss-1.png)
+![ss-1](images/ss-1.png)
 
 
 1️⃣ **Web Server Setup (Apache + PHP)**
@@ -33,12 +33,14 @@ dnf module -y enable php:8.1
 dnf module -y install php:8.1/common 
 yum install mysql -y 
 yum install php-mysqli -y </pre>
+![ss-10](images/Screenshot-2.png)
 
 
 Step 3 : Check the installed PHP version and enable httpd service 
 <pre>
 ○ Command : php -v 
 ○ Command : systemctl enable --now httpd</pre>
+![ss-10](images/Screenshot-3.png)
 
 
 Step 4 : Create a test page in 
@@ -46,6 +48,7 @@ Web Server
 <pre>
 ○ Commands : cd /var/www/html 
 vi php_test.php</pre>
+![ss-10](images/Screenshot-4.png)
 
 Incase if its not working – we need to stop the firewall of linux 
 Commands :  
@@ -54,15 +57,21 @@ i) setenforce 0
 ii) systemctl stop firewalld</pre>
 
 2️⃣ **Database Server Setup (MySQL)**
+
 Step 1 : Install MySQL Server in DB Server 
+<pre>
 ○ Command : dnf -y install mysql-server 
+</pre>
+
 ● Step 2 : Configure the character set in DB Server 
+<pre>
 ○ Command : vi /etc/my.cnf.d/charset.cnf 
 ○ Insert below in the same file 
 [mysqld] 
 character-set-server = utf8mb4 
 [client] 
 default-character-set = utf8mb4 
+</pre>
 ● Step 3 : Enable the Mysql Service in DB Server 
 <pre>
 ○ Command : systemctl enable --now mysqld 
@@ -71,7 +80,7 @@ default-character-set = utf8mb4
 <pre>
 ○ Command : mysql_secure_installation 
 </pre>
-
+![ss-10](images/Screenshot-5.png)
 After the setup, use below command to login to MySQL in DB Server 
 <pre>
 ○ Command 1 : mysql -u root -p 
@@ -86,6 +95,7 @@ CREATE USER 'udc'@'%' IDENTIFIED BY 'Welcome@123';
 GRANT ALL PRIVILEGES ON udc.* TO 'udc'@'%';
 exit;
 </pre>
+![ss-10](images/Screenshot-6.png)
 
 Step 5: Test Remote MySQL Access from Web Server
 <pre>mysql -h <DB-SERVER-IP> -u udc -p</pre>
@@ -107,6 +117,7 @@ CREATE TABLE users (
 );
 </pre>
 
+![ss-10](images/Screenshot-7.png)
 
 
 
@@ -124,8 +135,12 @@ Step 10: Deploy and Use UDC main.php
 Edit /var/www/html/main.php (see earlier for code).
 In browser, visit: http://<Web-Server-IP>/main.php
 </pre>
+![ss-10](images/Screenshot-8.png)
+
 Fill out the form and submit.
-<img width="767" height="385" alt="Screenshot_2025-07-25_130152 1" src="https://github.com/user-attachments/assets/be33d88e-773c-4bab-98cf-869cfb83f6de" />
+
+![ss-10](images/Screenshot-9.png)
+![ss-10](images/Screenshot10.png)
 
 
 
