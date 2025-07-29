@@ -1,7 +1,7 @@
 🗃️ **UDC Server: Step-by-Step Installation & Configuration Guide**
 
 📖 **Project Overview**
-The User Data Collector (UDC) is a PHP-based web application for securely collecting user data (name, age, country) and file uploads, saving them into a MySQL database. Deployed on two VMs: one as the web server, one as the database server.
+The User Data Collector (UDC) is a PHP-based web application for securely collecting user data (name, age, country,Degree) and file uploads, saving them into a MySQL database. Deployed on two VMs: one as the web server, one as the database server.
 
 ⚙️ **Prerequisites**
 <pre>2 CentOS 8/RHEL 8 VMs (Web and DB server)
@@ -28,7 +28,8 @@ Step 3: Test PHP with a "Hello World" Page
 <pre>
 echo "<?php echo 'Hello World!'; ?>" > /var/www/html/php_test.php
 In browser, visit: http://<Web-Server-IP>/php_test.php</pre>
-![WhatsApp Image 2025-07-28 at 13 10 09_fb23e799](https://github.com/user-attachments/assets/aba8850a-8f5d-425a-9e01-abb721df4535)
+<img width="1918" height="657" alt="image" src="https://github.com/user-attachments/assets/378b7c3a-6650-42b8-a392-aa0fe67aa376" />
+
 
 
 
